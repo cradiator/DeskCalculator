@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="DesktopCalculator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DeskCalculator.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FlexBison">
+      <UniqueIdentifier>{5d2acc60-635d-4302-abe3-e3a7ca6cf147}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FlexBison\Lex.l">
+      <Filter>FlexBison</Filter>
+    </None>
+    <None Include="FlexBison\Yacc.y">
+      <Filter>FlexBison</Filter>
+    </None>
+  </ItemGroup>
+</Project>
