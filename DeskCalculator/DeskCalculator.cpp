@@ -45,6 +45,24 @@ struct ast* sub_ast(struct ast* op1, struct ast* op2)
 	return make_ast(NODE_SUB, op1, op2);
 }
 
+struct ast* mul_ast(struct ast* op1, struct ast* op2)
+{
+    return make_ast(NODE_MUL, op1, op2);
+}
+
+struct ast* div_ast(struct ast* op1, struct ast* op2)
+{
+    return make_ast(NODE_DIV, op1, op2);
+}
+
+struct ast* create_ast_from_number(double d)
+{
+    struct ast* a = new struct ast;
+    a->type = NODE_NUMBER;
+    a->value = d;
+    return a;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	return 0;

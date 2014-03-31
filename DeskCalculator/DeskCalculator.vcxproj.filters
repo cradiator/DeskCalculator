@@ -18,11 +18,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FlexBison\Lex.l">
+    <CustomBuild Include="FlexBison\Yacc.y">
       <Filter>FlexBison</Filter>
-    </None>
-    <None Include="FlexBison\Yacc.y">
+    </CustomBuild>
+    <CustomBuild Include="FlexBison\Lex.l">
       <Filter>FlexBison</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>

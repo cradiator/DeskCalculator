@@ -91,8 +91,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FlexBison\Lex.l" />
-    <None Include="FlexBison\Yacc.y" />
+    <CustomBuild Include="FlexBison\Lex.l">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">flex.exe -o%(RootDir)%(Directory)%(Filename).c %(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build tokenizer..</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)%(Filename).c</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="FlexBison\Yacc.y">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bison.exe --output=%(RootDir)%(Directory)%(Filename).yy.c %(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">generate parser...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)%(Filename).yy.c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bison.exe --output=%(RootDir)%(Directory)$(Filename).yy.c %(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">generate parser...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)$(Filename).yy.c;%(Outputs)</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
