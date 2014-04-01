@@ -1,7 +1,12 @@
 %{
-#include "stdafx.h"
 #include "DesktopCalculator.h"
 #include <stdio.h>
+#include <stdarg.h>
+
+extern int yylineno;
+extern int yylex();
+void yyerror(char *s, ...);
+
 %}
 
 %union {
@@ -11,10 +16,11 @@
 
 %type <a> expr term factor
 %token <d> NUMBER
+%token EXIT
 %%
-cmdline : {}
+cmdline : {} 
         | cmdline expr '\n' {printf("%lf\n>", eval_ast($2));}
-		| cmdline '\n' {printf("\n");}
+		| cmdline '\n' {printf(">");}
 		;
 
 expr : factor {$$ = $1}
@@ -31,3 +37,13 @@ term : '(' expr ')' {$$ = $2}
      | NUMBER {$$ = create_ast_from_number($1);}
      ;  
 %%
+
+void
+yyerror(char *s, ...)
+{
+	va_list ap;
+	va_start(ap, s);
+	printf("%d: error: ", yylineno);
+	vprintf(s, ap);
+	printf("\n");
+}

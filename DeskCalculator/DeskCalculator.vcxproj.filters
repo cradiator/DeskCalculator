@@ -7,22 +7,23 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="DesktopCalculator.h" />
+    <ClInclude Include="FlexBison\yacc.tab.h">
+      <Filter>FlexBison</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DeskCalculator.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="FlexBison\lex.yy.c">
+      <Filter>FlexBison</Filter>
+    </ClCompile>
+    <ClCompile Include="FlexBison\yacc.tab.c">
+      <Filter>FlexBison</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FlexBison">
       <UniqueIdentifier>{5d2acc60-635d-4302-abe3-e3a7ca6cf147}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="FlexBison\Yacc.y">
-      <Filter>FlexBison</Filter>
-    </CustomBuild>
-    <CustomBuild Include="FlexBison\Lex.l">
-      <Filter>FlexBison</Filter>
-    </CustomBuild>
   </ItemGroup>
 </Project>

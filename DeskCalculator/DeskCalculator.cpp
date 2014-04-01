@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "assert.h"
 #include "DesktopCalculator.h"
+extern "C" int yyparse();
+extern "C" int yylineno;
 
 struct ast* make_ast(enum node_type type, struct ast* op1, struct ast* op2)
 {
@@ -65,6 +67,9 @@ struct ast* create_ast_from_number(double d)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+    yylineno = 0;
+    printf(">");
+    yyparse();
 	return 0;
 }
 

@@ -20,6 +20,10 @@ struct ast {
 	};
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 double eval_ast(struct ast* a);
 struct ast* add_ast(struct ast* op1, struct ast* op2);
 struct ast* sub_ast(struct ast* op1, struct ast* op2);
@@ -27,3 +31,6 @@ struct ast* mul_ast(struct ast* op1, struct ast* op2);
 struct ast* div_ast(struct ast* op1, struct ast* op2);
 struct ast* create_ast_from_number(double d);
 
+#ifdef __cplusplus
+}
+#endif
