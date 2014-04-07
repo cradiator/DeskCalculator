@@ -11,15 +11,28 @@ extern void yyerror(char *s, ...);
 \.[0-9]+ |
 [0-9]+\.[0-9]* {yylval.d = atof(yytext); return NUMBER;}
 
-"+" |
-"-" |
-"*" |
-"/" |
-"(" |
-")" |
+"+"  |
+"-"  |
+"*"  |
+"/"  |
+"("  |
+")"  |
+"{"  |
+"}"  |
+"="  |
 "\n" {return yytext[0];}
 
+">" {return CMP_G;}
+">=" {return CMP_GE;}
+"==" {return CMP_EQ;}
+"<" {return CMP_L;}
+"<=" {return CMP_LE;}
+"if" {return IF;}
+"while" {return WHILE;} 
+
 "exit" {yyterminate();}
+
+[a-zA-Z]+ {yylval.n = yytext; return SYMBOL;}
 
 [ \t] {}
 
