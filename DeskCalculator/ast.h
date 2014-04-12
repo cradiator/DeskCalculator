@@ -25,7 +25,7 @@ enum node_type {
     NODE_COND_WHILE,
     NODE_COND_END,
 
-} node_type;
+};
 
 struct ast_list {
     std::vector<struct ast*> list;
@@ -75,7 +75,7 @@ extern "C" {
     // NODE_COND_xxx
     struct ast* new_cond_ast(enum node_type type, struct ast* expr, struct ast_list* stat_list);
 
-    void print_ast(struct ast* a);
+    void print_ast(struct context* ctx, struct ast* a);
 
 #ifdef __cplusplus
 }

@@ -1,2 +1,2 @@
 bison.exe -d -v yacc.y
-flex.exe lex.l
+flex.exe -olex.yy.cc lex.l

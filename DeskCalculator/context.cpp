@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "context.h"
 
-struct symbol* lookup_symbol(struct context* current_ctx, char* name)
+struct symbol* lookup_symbol(struct context* current_ctx, const char* name)
 {
     assert(current_ctx && name);
     
@@ -46,14 +46,4 @@ struct context* new_context(struct context* prev_ctx)
 void destroy_context(struct context* ctx)
 {
     delete ctx;
-}
-
-struct context* get_global_context()
-{
-    static struct context* ctx = 0;
-    if (ctx)
-        return ctx;
-
-    ctx = new_context(0);
-    return ctx;
 }

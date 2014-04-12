@@ -24,4 +24,3 @@ struct context* new_context(struct context* prev_ctx);
 // destroy a context
 void destroy_context(struct context* ctx);
 
-struct context* get_global_context();

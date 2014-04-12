@@ -116,7 +116,7 @@ double eval_ast(struct context* ctx, struct ast* a)
         return eval_ast(ctx, a->op2.lchild) <= eval_ast(ctx, a->op2.rchild) ? 1 : 0;
 
     if (a->type == NODE_OP2_ASSIGN) {
-        if (a->op2.lchild->type != NODE_OP2_ASSIGN)
+        if (a->op2.lchild->type != NODE_REF)
             return 0;
 
         struct symbol* sym = lookup_symbol(ctx, a->op2.lchild->ref_name);
@@ -146,7 +146,7 @@ double eval_ast(struct context* ctx, struct ast* a)
     return 0;
 }
 
-void print_ast(struct ast* a)
+void print_ast(struct context* ctx, struct ast* a)
 {
     if (a->type == NODE_NUMBER) {
         printf("%lf\n>", a->value);
@@ -154,24 +154,24 @@ void print_ast(struct ast* a)
     }
 
     if (a->type == NODE_REF) {
-        struct symbol* sym = lookup_symbol(get_global_context(), a->ref_name);
+        struct symbol* sym = lookup_symbol(ctx, a->ref_name);
         if (sym->isinit == false) {
             printf("error: symbol %s not initialized. default 0\n>", a->ref_name);
         }
         else {
-            printf("%s:%lf\n>", sym->name, sym->value);
+            printf("%lf\n>", sym->value);
         }
         return;
     }
 
     if (a->type >= NODE_OP2_BEGIN && a->type < NODE_OP2_END) {
-        double v = eval_ast(get_global_context(), a);
+        double v = eval_ast(ctx, a);
         printf("%lf\n>", v);
         return;
     }
 
     if (a->type >= NODE_COND_BEGIN && a->type < NODE_COND_END) {
-        eval_ast(get_global_context(), a);
+        eval_ast(ctx, a);
         printf("eval condition.\n>");
         return;
     }

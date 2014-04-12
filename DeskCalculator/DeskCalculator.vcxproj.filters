@@ -6,24 +6,34 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="DesktopCalculator.h" />
-    <ClInclude Include="FlexBison\yacc.tab.h">
-      <Filter>FlexBison</Filter>
-    </ClInclude>
     <ClInclude Include="ast.h" />
     <ClInclude Include="context.h" />
+    <ClInclude Include="FlexBison\location.hh">
+      <Filter>FlexBison</Filter>
+    </ClInclude>
+    <ClInclude Include="FlexBison\position.hh">
+      <Filter>FlexBison</Filter>
+    </ClInclude>
+    <ClInclude Include="FlexBison\stack.hh">
+      <Filter>FlexBison</Filter>
+    </ClInclude>
+    <ClInclude Include="FlexBison\yacc.tab.hh">
+      <Filter>FlexBison</Filter>
+    </ClInclude>
+    <ClInclude Include="DeskCalculator.h" />
+    <ClInclude Include="unistd.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DeskCalculator.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="FlexBison\lex.yy.c">
-      <Filter>FlexBison</Filter>
-    </ClCompile>
-    <ClCompile Include="FlexBison\yacc.tab.c">
-      <Filter>FlexBison</Filter>
-    </ClCompile>
     <ClCompile Include="ast.cpp" />
     <ClCompile Include="context.cpp" />
+    <ClCompile Include="FlexBison\yacc.tab.cc">
+      <Filter>FlexBison</Filter>
+    </ClCompile>
+    <ClCompile Include="FlexBison\lex.yy.cc">
+      <Filter>FlexBison</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FlexBison">
